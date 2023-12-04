@@ -2,182 +2,29 @@ import React, { useEffect, useRef } from 'react'
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, Float, OrbitControls, Scroll, ScrollControls, Sparkles } from '@react-three/drei';
+import { ContactShadows, Environment, Float, Lightformer, OrbitControls, Scroll, ScrollControls, Sparkles } from '@react-three/drei';
 import { Button, Col, Container, Row } from 'react-bootstrap'
 
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Planes } from './Plane2';
 import { Bloom, DepthOfField, EffectComposer, Vignette } from '@react-three/postprocessing';
-import Experiance from './componets/Experiance';
+import { Citys } from './City1';
+import { Aero } from './Aero';
+import { City } from './City';
+import { motion, useAnimation } from 'framer-motion';
+import { useSpring ,animated as a} from '@react-spring/three';
 
 function App(props) {
 
   const ref =useRef()
-  useFrame(()=>{
-  })
+ 
   return (
     <>
+  
     <color attach="background" args={["#000"]} />
-    
-    <Environment preset='warehouse'/>
-
-    
-    
-    <ScrollControls pages={6} damping={0.26}>
-      <Scroll > 
-        <Float floatingRange={[-5,2]} rotation-x={-1} speed={2}>
-        <Card rotation-x={Math.PI * 0.05} scale={1} position={[-5, -2.5, 0]}/>
-          </Float>
-          {/* <Float floatingRange={[-5,-6]}>
-               <Card rotation-x={Math.PI * 0.05} scale={1} position={[-10, 0, 0]}/>
-          </Float>  */} 
- 
-         
-          {/* <Plane   /> */}
-          <Float rotationIntensity={0.2} floatIntensity={0.5} floatingRange={[10,1]} rotation-x={-1} speed={2}>
-          < Planes scale={0.09} rotation-y={1.5} rotation-z={1.5}  position={[0, 0, 1]}/>
-          </Float>
-          {/* <Float  floatingRange={[1,-2]} rotation-x={-1} speed={1}>
-          < Planes scale={0.09} rotation-y={1.5} />
-          </Float> */}
-          
-        
-          
-      <Sparkles noise={0} count={500} speed={0.01} size={3} color={"#FFD2BE"} opacity={10} scale={[20,100,20]}></Sparkles>
-        <Sparkles noise={0} count={500} speed={0.01} size={10} color={"#FFF"} opacity={2} scale={[30,100,10]} ></Sparkles>
-      </Scroll>
-      <Scroll html style={{ width: "100%" }}>
-          <Container style={{ position: "relative" }}>
-          
-            <Row  
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px" }}>
-                Dream Travels
-                  </h1>
-                </div>
-               
-              </Col>
-            </Row>
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "100vh",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                    *********************************
-                  </h1>
-                </div>
-              </Col>
-            </Row>
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "200vh",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>$$$$$</h1>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                  #########
-                  </h1>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                    ***********
-                  </h1>
-                </div>
-              </Col>
-            </Row>
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "300vh",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                   ########### <br />
-                  &&&&&&&&&&&&&&
-                  </h1>
-                </div>
-              </Col>
-            </Row>
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "400vh",
-              }}
-            >
-              <Col xs={8}>
-                <div>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                   ^^^^^^^^^^^^^^^
-                    <br /> ***************
-                  </h1>
-                </div>
-              </Col>
-            </Row>
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "500vh",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px", color: "#fff" }}>
-                   **********
-                    <br /> &&&&&&&&&&&&
-                  </h1>
-                  <h2
-                    style={{
-                      marginBottom: "30px",
-                      marginTop: "-1px",
-                      color: "#fff",
-                    }}
-                  >
-                   $$$$$$$$$$$$$$
-                  </h2>
-                  <button className="glow-on-hover" type="button">Get More</button>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </Scroll>
-
-    </ScrollControls>
+    <Environment preset='city' background/>   
+    <Flight />
+  
     </>
    
   )
@@ -186,29 +33,7 @@ function App(props) {
 export default App
 
 
-const Card=()=>{
-  return(
-    <mesh  position={[2.5,0,0]}>
-    <ambientLight/>
-    <OrbitControls enableZoom={false} />
-    <boxGeometry/>
-    <meshNormalMaterial color={"red"}/>
-   </mesh>
 
-  )
-}
-
-const Scard=()=>{
-  return(
-    <mesh  position={[1,0,0]}>
-    <ambientLight/>
-    <OrbitControls enableZoom={false} />
-    <sphereGeometry/>
-    <meshNormalMaterial color={"red"}/>
-   </mesh>
-
-  )
-}
 
 
 
@@ -219,7 +44,9 @@ function Plane(props) {
   const { actions } = useAnimations(animations, group);
   useEffect(() => {
     console.log(actions);
+    actions.Action.play()
   });
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -410,3 +237,280 @@ function Plane(props) {
 }
 
 useGLTF.preload("/models/plane1.glb");
+
+
+
+
+
+function Ground(){
+  return(
+   <>
+     <hemisphereLight intensity={0.5} />
+    <ContactShadows resolution={1024} frames={1} position={[0, -1.16, 0]} scale={15} blur={0.5} opacity={1} far={20} />
+    <mesh scale={4} position={[3, -2, -1.5]} rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}>
+        <ringGeometry args={[0.9, 1, 4, 1]} />
+        <meshStandardMaterial color="white" roughness={0.75} />
+      </mesh>
+     <mesh scale={4} position={[-3, 2, -1]} rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}>
+        <ringGeometry args={[0.9, 1, 3, 1]} />
+        <meshStandardMaterial color="white" roughness={0.75} />
+      </mesh>
+      <Environment resolution={512}>
+        {/* Ceiling */}
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -9]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -6]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -3]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 0]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 3]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 6]} scale={[10, 1, 1]} />
+        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 9]} scale={[10, 1, 1]} />
+        {/* Sides */}
+        <Lightformer intensity={2} rotation-y={Math.PI / 2} position={[-50, 2, 0]} scale={[100, 2, 1]} />
+        <Lightformer intensity={2} rotation-y={-Math.PI / 2} position={[50, 2, 0]} scale={[100, 2, 1]} />
+        {/* Key */}
+        <Lightformer form="ring" color="red" intensity={10} scale={2} position={[10, 5, 10]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
+      </Environment>
+      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
+   </>
+
+  )
+}
+
+
+
+function Flight(){
+
+    const springs =useSpring({
+      to: async next => {
+      await next({ position: [0, 0, 0] });
+    },
+    from: { position: [2, 0, 0] },
+    config: { duration: 4000 }
+    })
+
+    const springs1 =useSpring({
+      to: async next => {
+      await next({ position: [0, 0, 0] });
+    },
+    from: { position: [-2, 0, 0] },
+    config: { duration: 4000 }
+    })
+
+
+   const springs2 = useSpring({
+  to: async next => {
+    await next({ position: [-2, -1, 1], rotation: [0, 2 * Math.PI, 0] });
+    await next({ position: [8, -1, 1], rotation: [0, 2 * Math.PI, 0] }); // Rotate 360 degrees around Y-axis
+    await next({ position: [0, 0, 0], rotation: [0, 0, 0] }); // Reset rotation
+  },
+  from: { position: [-1, 0, 0], rotation: [0, 0, 0] },
+  config: { duration: 12000 }, // Increase duration for a slower animation
+  reset: true,
+  loop: true,
+});
+
+    
+
+  return(
+
+    <ScrollControls pages={6} damping={0.26}>
+    <ambientLight intensity={0.1}/>
+    <Scroll > 
+    <Ground position={[0,-1,0]}/>
+  
+     <a.group {...springs}>
+      <Float  rotationIntensity={0.2} floatIntensity={0.5} floatingRange={[-0.2,-0.5 ]}  speed={0.5}>
+  
+        < Planes scale={0.01} rotation-z={0.3} position={[1, 0.8, 4]}/>
+        </Float>
+
+      
+      </a.group> 
+         {/* <Plane   /> */}
+        
+        <a.group {...springs1}>
+        <Float rotationIntensity={0.2} floatIntensity={0.5} floatingRange={[-0.2,-0.5 ]}  speed={0.5}>
+        < Planes scale={0.01} rotation-y={-0.5} rotation-z={2.9} rotation-x={-3}  position={[-1, 0.3, 4]}/>
+        </Float>
+        </a.group>
+
+        <Float rotationIntensity={0.2} floatIntensity={0.5} floatingRange={[-0.2,-0.5 ]}  speed={0.5}>
+        < Planes scale={0.02} position={[-2,0.8,-4]}/>
+        </Float>
+
+        
+  
+      <a.group {...springs2}>
+         <Plane scale={0.2} position={[0,0.8,-4]}/>
+      </a.group>
+
+
+        
+
+         
+
+        {/* <Aero scale={0.01}/> */}
+       
+
+
+        {/* <Float rotationIntensity={0.2} floatIntensity={0.5} floatingRange={[10,0 ]} rotation-x={-1} speed={2}>
+        < Planes scale={0.05} rotation-y={1.4} rotation-z={1.5}  position={[0, 1, 1]}/>
+        </Float> */}
+      
+
+  
+      <Citys  rotation-y={-0.1}  scale={4} position={[1,-3,0]} blur={0.1}/>
+
+      <City />
+        
+      
+        
+    <Sparkles noise={0} count={100} speed={0.01} size={3} color={"#FFD2BE"} opacity={10} scale={[20,100,20]}></Sparkles>
+      <Sparkles noise={0} count={100} speed={0.01} size={7} color={"#FFF"} opacity={2} scale={[30,100,10]} ></Sparkles>
+    </Scroll>
+    <Scroll html style={{ width: "100%" }}>
+        <Container style={{ position: "relative" }}>
+        
+          <Row  
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+            }}
+          >
+            <Col xs={6}>
+              <div>
+                <h1 className='glow' style={{ marginBottom: "0px" }}>
+              Dream Travels
+                </h1>
+                {/* <button className="glow-on-hover" type="button">Get More</button> */}
+              </div>
+             
+            </Col>
+          </Row>
+          <Row
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+              top: "100vh",
+            }}
+          >
+            <Col xs={6}>
+              <div>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+                  *************
+                </h1>
+              </div>
+            </Col>
+          </Row>
+          <Row
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+              top: "200vh",
+            }}
+          >
+            <Col xs={6}>
+              <div>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>$$$$$</h1>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+            Hello world
+                </h1>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+                Hello world
+                </h1>
+              </div>
+            </Col>    
+          </Row>
+          <Row
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+              top: "300vh",
+            }}
+          >
+            <Col xs={6}>
+              <div>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+                Hello world <br />
+                Hello world
+                </h1>
+              </div>
+            </Col>
+          </Row>
+          <Row
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+              top: "400vh",
+            }}
+          >
+            <Col xs={8}>
+              <div>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+                Hello world
+                  <br />   Hello world
+                </h1>
+              </div>
+            </Col>
+          </Row>
+          <Row
+            className="text-center align-items-center justify-content-center"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              padding: "0px 30px 0px",
+              top: "500vh",
+            }}
+          >
+            <Col xs={6}>
+              <div>
+                <h1 style={{ marginBottom: "0px", color: "#fff" }}>
+                Hello world
+                  <br />   Hello world
+                </h1>
+                <h2
+                  style={{
+                    marginBottom: "30px",
+                    marginTop: "-1px",
+                    color: "#fff",
+                  }}
+                >
+                   Hello world
+                </h2>
+                <button className="glow-on-hover" type="button">Get More</button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Scroll>
+
+  </ScrollControls>
+
+
+  )
+}
+
+
+
+function Building(){
+  return(
+    <>
+    </>
+  )
+}
